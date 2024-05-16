@@ -1,0 +1,19 @@
+---
+- name: Install Apache HTTPD
+  hosts: all
+  become: yes
+  tasks:
+    - name: Install Apache HTTPD on Ubuntu
+      apt:
+        name: apache2
+        state: present
+      when:
+        - ansible_distribution == 'Ubuntu'
+
+    - name: Install Apache HTTPD on CentOS 8
+      yum:
+        name: httpd
+        state: present
+      when:
+        - ansible_distribution == 'CentOS' and ansible_distribution_version == '8'
+

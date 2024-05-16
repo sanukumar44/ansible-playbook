@@ -1,0 +1,15 @@
+---
+- name: Create files and directory
+  hosts: all
+  become: yes
+  tasks:
+    - name: Create kaju.txt file in /opt
+      file:
+        path: /opt/kaju.txt
+        state: absent
+
+    - name: Create directory firstdire in /home/sanu
+      file:
+        path: /home/sanu/firstdire
+        state: absent
+

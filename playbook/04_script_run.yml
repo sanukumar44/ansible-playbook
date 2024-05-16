@@ -1,0 +1,7 @@
+---
+- name: Run script on remote server
+  hosts: all
+  tasks:
+    - name: Run script
+      shell: /tmp/test.sh
+

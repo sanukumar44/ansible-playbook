@@ -1,0 +1,11 @@
+---
+- name: Add user and create home directory
+  hosts: all
+  tasks:
+    - name: Add user aryan
+      user:
+        name: aryan
+        state: present
+        createhome: yes  
+        home: /home/user/aryan
+

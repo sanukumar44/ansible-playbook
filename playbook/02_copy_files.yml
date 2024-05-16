@@ -1,0 +1,10 @@
+---
+- name: Create files and directory
+  hosts: all
+  tasks:
+    - name: Copy file
+      copy:
+        src: /root/myfile.txt
+        dest: /tmp
+        owner: sanu
+

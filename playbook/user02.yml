@@ -1,0 +1,16 @@
+---
+- name: Add user mandip and create group itcompany
+  hosts: all
+  
+  tasks:
+    - name: Create group itcompany
+      group:
+        name: itcompany
+        state: present
+
+    - name: Add user mandip
+      user:
+        name: mandip
+        group: itcompany 
+        state: present
+

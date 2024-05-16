@@ -1,0 +1,17 @@
+---
+- name: Create files and directory
+  hosts: all
+  tasks:
+    - name: Create group 'itcompany'
+      group:
+        name: itcompany
+        state: present
+
+    - name: Copy file
+      copy:
+        src: /root/myfile.txt
+        dest: /tmp/myfile.txt
+        owner: sanu
+        group: itcompany
+        mode: ugo=rw
+        backup: true

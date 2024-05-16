@@ -1,0 +1,19 @@
+---
+- name: Kill Nginx process and restart Nginx
+  hosts: all
+  become: yes
+  tasks:
+    - name: Find Nginx process ID
+      shell: "pid=$(pgrep nginx) && echo $pid"
+      register: nginx_pid
+      ignore_errors: yes
+
+    - name: Kill Nginx process
+      shell: "kill -9 {{ nginx_pid.stdout }}"
+      when: nginx_pid.stdout is defined
+
+    - name: Restart Nginx
+      service:
+        name: nginx
+        state: restarted
+
